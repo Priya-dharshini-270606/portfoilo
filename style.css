@@ -1,0 +1,886 @@
+/* Basic Reset & Font Imports */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern, clean font */
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa; /* Light background */
+    scroll-behavior: smooth; /* Smooth scrolling for nav links */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Section Padding */
+.section-padding {
+    padding: 80px 0;
+}
+
+.bg-light {
+    background-color: #e9ecef; /* Slightly darker light background */
+}
+
+/* Headings */
+h1, h2, h3 {
+    font-weight: 700;
+    color: #212529;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3.8em;
+    margin-bottom: 25px;
+}
+
+h2 {
+    font-size: 2.8em;
+    margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #007bff; /* Primary brand color */
+    border-radius: 5px;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+.highlight {
+    color: #007bff;
+}
+
+/* Buttons */
+.btn-primary {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 14px 30px;
+    border-radius: 8px; /* Slightly rounded */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 25px; /* Adjust margin if needed with header-buttons */
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
+}
+
+.btn-secondary {
+    display: inline-block;
+    border: 2px solid #007bff;
+    color: #007bff;
+    padding: 12px 25px;
+    border-radius: 8px;
+    transition: all 0.3s ease, transform 0.2s ease;
+    margin-top: 25px; /* Adjust margin if needed with header-buttons */
+    font-weight: 600;
+}
+
+.btn-secondary:hover {
+    background-color: #007bff;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #212529; /* Darker navbar */
+    color: #fff;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+}
+
+.navbar.sticky {
+    background-color: rgba(33, 37, 41, 0.95); /* Slightly transparent when sticky */
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 35px;
+}
+
+.nav-links a {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.1em;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #007bff;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 3px;
+    bottom: -5px;
+    left: 0;
+    background-color: #007bff;
+    transition: width 0.3s ease-out;
+}
+
+/* Active navigation link */
+.nav-links a.active {
+    color: #007bff; /* Highlight color */
+    font-weight: bold;
+}
+.nav-links a.active::after {
+    width: 100%; /* Ensure underline for active */
+}
+
+
+.burger-menu {
+    display: none; /* Hidden on desktop */
+    cursor: pointer;
+    z-index: 1001; /* Ensure it's above other elements */
+}
+
+.burger-menu div {
+    width: 28px;
+    height: 3px;
+    background-color: #fff;
+    margin: 6px 0;
+    transition: all 0.3s ease;
+}
+
+/* Header & Hero Section */
+#home {
+    min-height: 100vh; /* Full viewport height for hero */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('your-hero-background.jpg') no-repeat center center/cover;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    padding-top: 80px; /* To account for sticky navbar */
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    max-width: 800px;
+}
+
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid #fff;
+    margin-bottom: 30px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+#home h1 {
+    font-size: 4em;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+#home .tagline {
+    font-size: 1.8em;
+    color: #e0e0e0;
+    margin-bottom: 20px; /* Adjusted margin to make space for buttons */
+    font-weight: 300;
+}
+
+/* For the blinking cursor in the tagline (Typewriter effect) */
+.blinking-cursor {
+    font-weight: 100;
+    animation: 1s blink step-end infinite;
+}
+
+@keyframes blink {
+    from, to { color: transparent }
+    50% { color: inherit }
+}
+
+
+.social-links {
+    /* Changed to flexbox to use gap for spacing */
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Increased gap between social icons */
+    margin-bottom: 30px; /* Adjusted margin to make space for buttons */
+    flex-wrap: wrap; /* Allow icons to wrap on smaller screens */
+}
+
+.social-links a {
+    color: #fff;
+    font-size: 2.2em;
+    margin: 0; /* Remove individual margins as gap handles spacing */
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-8px) scale(1.1);
+    color: #007bff;
+}
+
+/* Style for the buttons in the header */
+.header-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between buttons */
+    flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+    margin-top: 20px;
+}
+.header-buttons .btn-primary,
+.header-buttons .btn-secondary {
+    margin-top: 0; /* Override default button margin to control with gap */
+}
+
+
+/* About Section */
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 60px; /* Increased gap */
+}
+
+.about-text {
+    flex: 1;
+    min-width: 320px;
+    max-width: 600px;
+}
+
+.about-text p {
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+.about-image {
+    flex: 1;
+    min-width: 280px;
+    text-align: center;
+}
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Skills Section */
+/* --- SKILLS SECTION UNIQUE STYLING --- */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjusted minmax slightly */
+    gap: 30px; /* Space between skill items */
+    text-align: center;
+    margin-top: 40px;
+}
+
+.skill-item {
+    /* Base styles for the unique skill item */
+    background: linear-gradient(145deg, #e0f7fa, #ffffff); /* Subtle gradient background */
+    padding: 25px 15px; /* Adjust padding as needed */
+    border-radius: 50%; /* Makes it circular */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    transition: all 0.4s ease-in-out; /* Smooth transition for all properties */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1; /* Ensures perfect circle if width/height are set implicitly */
+    min-width: 140px; /* Minimum size for the circle */
+    max-width: 180px; /* Max size for the circle */
+    margin: 0 auto; /* Center the circles within their grid cells */
+    border: 2px solid transparent; /* Prepare for border animation */
+    position: relative; /* For pseudo-elements or absolute positioning if needed */
+    overflow: hidden; /* Ensures content stays within the circle */
+}
+
+/* Optional: Add a subtle overlay or border on hover */
+.skill-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    transition: all 0.4s ease-in-out;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    z-index: 1;
+}
+
+.skill-item:hover {
+    transform: scale(1.1) translateY(-8px); /* Grow and lift on hover */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* More prominent shadow */
+    background: linear-gradient(145deg, #d3effa, #e0faff); /* Lighter gradient on hover */
+}
+
+.skill-item:hover::before {
+    border-color: #007bff; /* Primary color border on hover */
+    transform: scale(0.95); /* Shrink the inner border slightly */
+}
+
+
+.skill-item i {
+    font-size: 3.5em; /* Icon size */
+    color: #007bff; /* Primary color for icons */
+    margin-bottom: 10px; /* Reduced margin */
+    transition: color 0.3s ease;
+    position: relative; /* Ensure icon is above pseudo-elements */
+    z-index: 2;
+}
+
+.skill-item:hover i {
+    color: #0056b3; /* Darker blue on hover */
+}
+
+.skill-item h3 {
+    font-size: 1.1em; /* Skill name size */
+    color: #333;
+    margin-bottom: 0;
+    position: relative;
+    z-index: 2;
+}
+
+
+/* Projects Section */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px; /* Increased gap */
+}
+
+.project-item {
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-item:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.project-item img {
+    width: 100%;
+    height: 240px; /* Taller images */
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.project-item:hover img {
+    transform: scale(1.03); /* Subtle zoom on hover */
+}
+
+.project-item h3 {
+    font-size: 1.7em;
+    margin: 25px 25px 15px;
+    text-align: left;
+    color: #343a40;
+}
+
+.project-item p {
+    padding: 0 25px 20px;
+    flex-grow: 1;
+    color: #6c757d;
+}
+
+.project-links {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px; /* Increased gap for buttons */
+    padding: 0 25px 25px;
+}
+
+.btn-project {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Gap between text and icon */
+    background-color: #28a745; /* Success green */
+    color: white;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn-project:hover {
+    background-color: #218838;
+}
+.btn-project i {
+    font-size: 0.9em; /* Adjust icon size */
+}
+
+/* Achievements Section Specific Styles for Unique Look */
+
+/* Overall container for the achievement cards */
+.achievements-grid-container {
+    display: grid;
+    /* Adjust minmax(300px, 1fr) based on how many columns you want.
+       300px ensures items don't get too small. */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px; /* Space between achievement cards */
+    margin-top: 40px;
+}
+
+/* Style for each individual achievement card */
+.achievement-item {
+    background-color: #ffffff; /* White background for cards */
+    padding: 30px; /* Internal padding */
+    border-radius: 12px; /* Rounded corners for the card */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    display: flex; /* Use flexbox for icon and details layout */
+    flex-direction: column; /* Stack icon and details vertically */
+    align-items: center; /* Center content horizontally */
+    text-align: center; /* Center text within the item */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+    min-height: 200px; /* Ensure a consistent height for cards */
+    justify-content: center; /* Vertically center content */
+}
+
+.achievement-item:hover {
+    transform: translateY(-10px); /* Lift card on hover */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); /* More prominent shadow on hover */
+}
+
+/* Style for the icon container within each card */
+.achievement-icon {
+    font-size: 3.5em; /* Larger icon size */
+    color: #007bff; /* Accent color for icons */
+    margin-bottom: 20px; /* Space between icon and text */
+    /* Optional: Add a background or border around the icon */
+    /* background-color: #e0f2ff; */
+    /* border-radius: 50%; */
+    /* padding: 15px; */
+}
+
+/* Style for the text details within each card */
+.achievement-details h3 {
+    font-size: 1.4em; /* Larger title for achievement */
+    color: #34495e; /* Darker text for title */
+    margin-bottom: 10px; /* Space below title */
+    font-weight: 600;
+}
+
+.achievement-details p {
+    font-size: 1em; /* Standard paragraph size */
+    color: #666; /* Lighter text for description */
+    line-height: 1.5;
+    margin-bottom: 0; /* No bottom margin for last paragraph */
+}
+
+
+/* Contact Section */
+.contact-intro {
+    text-align: center;
+    font-size: 1.3em;
+    margin-bottom: 50px;
+    color: #5c636a;
+}
+
+.contact-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px; /* Increased gap */
+    justify-content: center;
+}
+
+.contact-form {
+    flex: 2;
+    min-width: 350px;
+    max-width: 700px;
+    background-color: #fff;
+    padding: 40px; /* Increased padding */
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #495057;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 14px; /* Increased padding */
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 1.05em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 16px; /* Increased padding */
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+/* Contact Information Block - Modified for better wrapping and layout */
+.contact-info-block {
+    flex: 1;
+    min-width: 280px;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Paragraphs within the contact info block, now using flex for alignment */
+.contact-info-block p {
+    display: flex; /* Makes the icon and text flex items */
+    align-items: center; /* Vertically aligns icon and text */
+    margin-bottom: 20px;
+    font-size: 1.15em;
+    color: #495057;
+    flex-wrap: wrap; /* Allows icon and text to wrap to a new line if content is too long */
+    gap: 10px; /* Provides consistent spacing between icon and text */
+}
+
+/* The icon within the contact info paragraph */
+.contact-info-block p i {
+    margin-right: 0; /* Remove previous fixed margin as 'gap' property handles spacing */
+    flex-shrink: 0; /* Prevents the icon from shrinking on small screens */
+    color: #007bff;
+    font-size: 1.5em;
+}
+
+/* The actual email/phone link text */
+.contact-info-block p a {
+    color: #495057; /* Ensuring link color matches surrounding text unless hovered */
+    text-decoration: none;
+    word-break: break-word; /* Crucial: Allows long words (like emails) to break and wrap */
+    overflow-wrap: break-word; /* Alternative for better browser compatibility */
+    flex-shrink: 1; /* Allows the text to shrink and wrap */
+    /* Add transition if you want hover effect on text color here specifically */
+    transition: color 0.3s ease;
+}
+
+.contact-info-block p a:hover {
+    color: #007bff; /* Highlight color on hover for contact links */
+}
+
+/* Social links container within the contact info block */
+.social-links-contact {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 25px; /* Increased gap */
+    flex-wrap: wrap;
+}
+
+.social-links-contact a {
+    color: #343a40;
+    font-size: 2.5em;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.social-links-contact a:hover {
+    color: #007bff;
+    transform: translateY(-5px);
+}
+
+/* Footer */
+footer {
+    background-color: #212529;
+    color: #e0e0e0;
+    text-align: center;
+    padding: 40px 0; /* Increased padding */
+    font-size: 0.95em;
+}
+
+footer p {
+    margin-bottom: 12px;
+}
+
+footer a {
+    color: #007bff;
+    font-weight: 500;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    h1 {
+        font-size: 3em;
+    }
+    h2 {
+        font-size: 2.2em;
+    }
+    .profile-pic {
+        width: 160px;
+        height: 160px;
+    }
+    .nav-links li {
+        margin-left: 20px;
+    }
+    .about-content,
+    .contact-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .about-text,
+    .about-image,
+    .contact-form,
+    .contact-info-block {
+        min-width: unset;
+        width: 100%;
+    }
+    .section-padding {
+        padding: 60px 0;
+    }
+    .projects-grid, .skills-grid, .achievements-grid-container {
+        gap: 25px;
+    }
+    .project-item img {
+        height: 200px;
+    }
+    .achievement-item {
+        min-height: auto; /* Allow height to adjust */
+        padding: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 65px; /* Adjust based on navbar height */
+        left: 0;
+        background-color: #212529;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        padding: 20px 0;
+        text-align: center;
+        transition: transform 0.3s ease-in-out;
+        transform: translateX(100%); /* Start off-screen */
+    }
+
+    .navbar .nav-links.nav-active {
+        display: flex;
+        transform: translateX(0%); /* Slide in */
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+        opacity: 0; /* Hidden initially for staggered animation */
+    }
+
+    .nav-links.nav-active li {
+        opacity: 1; /* Show when active */
+        transition: opacity 0.5s ease-in-out forwards; /* Fade in */
+    }
+
+    /* Staggered animation for nav links */
+    .nav-links.nav-active li:nth-child(1) { transition-delay: 0.1s; }
+    .nav-links.nav-active li:nth-child(2) { transition-delay: 0.2s; }
+    .nav-links.nav-active li:nth-child(3) { transition-delay: 0.3s; }
+    .nav-links.nav-active li:nth-child(4) { transition-delay: 0.4s; }
+    .nav-links.nav-active li:nth-child(5) { transition-delay: 0.5s; }
+    .nav-links.nav-active li:nth-child(6) { transition-delay: 0.6s; }
+
+
+    .burger-menu {
+        display: block; /* Show burger menu */
+    }
+
+    #home {
+        min-height: 80vh; /* Adjust as needed for mobile hero */
+        padding-top: 70px; /* Account for mobile navbar */
+    }
+
+    #home h1 {
+        font-size: 2.8em;
+    }
+
+    #home .tagline {
+        font-size: 1.4em;
+    }
+
+    h2 {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+
+    .section-padding {
+        padding: 40px 0;
+    }
+
+    .skill-item {
+        padding: 25px 15px;
+    }
+    .skill-item i {
+        font-size: 3em;
+    }
+    .skill-item h3 {
+        font-size: 1em;
+    }
+    .project-item img {
+        height: 180px;
+    }
+    .contact-form, .contact-info-block {
+        padding: 30px;
+    }
+    .social-links-contact a {
+        font-size: 2em;
+    }
+
+    .achievements-grid-container {
+        grid-template-columns: 1fr; /* Stack items on very small screens */
+        gap: 20px;
+    }
+    .achievement-icon {
+        font-size: 3em;
+        margin-bottom: 15px;
+    }
+    .achievement-details h3 {
+        font-size: 1.2em;
+    }
+    .achievement-details p {
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 480px) {
+    #home h1 {
+        font-size: 2.2em;
+    }
+    #home .tagline {
+        font-size: 1.1em;
+    }
+    .profile-pic {
+        width: 140px;
+        height: 140px;
+    }
+    h2 {
+        font-size: 1.8em;
+    }
+    .btn-primary, .btn-secondary {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+    .social-links a {
+        font-size: 1.8em;
+        margin: 0 10px;
+    }
+    .skill-item {
+        min-width: 120px;
+        font-size: 0.9em;
+    }
+    .skill-item i {
+        font-size: 2.5em;
+    }
+    .skill-item h3 {
+        font-size: 0.9em;
+    }
+    .project-item h3 {
+        font-size: 1.4em;
+    }
+    .btn-project {
+        padding: 6px 12px;
+        font-size: 0.85em;
+    }
+    .header-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+
+/* Burger Menu Animation (requires burger-menu div elements in HTML) */
+.burger-menu.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+.burger-menu.toggle .line2 {
+    opacity: 0;
+}
+.burger-menu.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
